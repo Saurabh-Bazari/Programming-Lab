@@ -46,4 +46,12 @@ public class Vehicle {
     public void setTimeLeftForGreenAfterPassed(int timeLeftForGreenAfterPassed) {
         this.timeLeftForGreenAfterPassed = timeLeftForGreenAfterPassed;
     }
+
+    public Vehicle(int vehicleNumber, char sourceDirectionSymbol, char destinationDirectionSymbol,
+            int waitingTimeForCrossRoad) {
+        this.vehicleNumber = vehicleNumber;
+        this.sourceDirectionSymbol = sourceDirectionSymbol;
+        this.destinationDirectionSymbol = destinationDirectionSymbol;
+        this.waitingTimeForCrossRoad = waitingTimeForCrossRoad;
+    }
 }

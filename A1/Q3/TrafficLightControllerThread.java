@@ -30,11 +30,15 @@ class TrafficLightControllerThread extends Thread {
         jFrame.add(jPanel); 
         jFrame.setVisible(true);
         trafficLightTableModel.setRowCount(0); 
-        String data[]={"T1","RED","--"};
+        String data[]={"T1",trafficLightForSouth.getColour(),Integer.toString(trafficLightForSouth.getTimeForCurrentState())};
         trafficLightTableModel.addRow(data);
         data[0]="T2";
+        data[1]=trafficLightForEast.getColour();
+        data[2]=Integer.toString(trafficLightForEast.getTimeForCurrentState()) ;
         trafficLightTableModel.addRow(data);
         data[0]="T3";
+        data[1]=trafficLightForWest.getColour();
+        data[2]=Integer.toString( trafficLightForWest.getTimeForCurrentState());
         trafficLightTableModel.addRow(data);
         trafficLightTableModel.fireTableDataChanged();
     }

@@ -10,7 +10,6 @@ import javax.swing.JLabel;
 class Input {
     JFrame jFrame;
     int currentTimer;
-    // static JTextArea ;
     static JLabel SWLabel;
     static JTextArea SWinput;
     static JTextArea SEinput;
@@ -22,21 +21,49 @@ class Input {
     static JButton submitButton;
     JTable jTable;
 
-
     public Input(JFrame jFrame) {
-        Main mainObject = new Main();
-        this.jFrame = jFrame;  
+        this.jFrame = jFrame; 
+        Main mainObject = new Main(); 
         JPanel jPanel = new JPanel();
         jTable = new JTable();
+        inputTableModel = (DefaultTableModel) jTable.getModel();
         submitButton = new JButton("SUBMIT");
         submitButton.setActionCommand("ENTER");
         submitButton.addActionListener(new ActionListener(){
             public void actionPerformed(ActionEvent e){
+                Main.start=false;
+                char a='d',b='d';
+                int c=0;
                 for(int i=0;i<6;i++){
-                    mainObject.inputFromGUI(((String)inputTableModel.getValueAt(i,0)).charAt(0),
-                    ((String)inputTableModel.getValueAt(i,1)).charAt(0),
-                    Integer.parseInt(((String)inputTableModel.getValueAt(i,2))));
+                    try{
+                        a=((String)inputTableModel.getValueAt(i,0)).charAt(0);
+                    }
+                    catch(Exception ex){
+                        ex.printStackTrace();
+                        System.out.println("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
+                    }
+                    try{
+                        b=((String)inputTableModel.getValueAt(i,1)).charAt(0);
+                    }
+                    catch(Exception ex){
+                        ex.printStackTrace();
+                        System.out.println("bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb");
+                    }try{
+                        c=Integer.parseInt(((String)inputTableModel.getValueAt(i,2)));
+                    }
+                    catch(Exception ex){
+                        ex.printStackTrace();
+                        System.out.println("ccccccccccccccccc");
+                    }
+                    try{
+                    mainObject.inputFromGUI(a,b,c);
+                    }
+                    catch(Exception ex){
+                        ex.printStackTrace();
+                        System.out.println("SAHIB");
+                    }
                     inputTableModel.setValueAt("0",i,2);
+                    
                 }
                 inputTableModel.fireTableDataChanged();
             }
@@ -52,7 +79,6 @@ class Input {
         jFrame.add(jPanel); 
         jFrame.add(buttonPanel);
         jFrame.setVisible(true);
-        inputTableModel = (DefaultTableModel) jTable.getModel();
         inputTableModel.setRowCount(0);
         String columnIndentifier[]={"Initial Directions","Final Direction","Cars"};
         inputTableModel.setColumnIdentifiers(columnIndentifier);
@@ -73,4 +99,6 @@ class Input {
         rowData[1]="S";
         inputTableModel.addRow(rowData);
     }
+
+   
 }
