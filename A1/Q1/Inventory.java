@@ -1,4 +1,5 @@
 public class Inventory {
+  
   private int caps;
   private int smallTShirt;
   private int mediumTShirt;

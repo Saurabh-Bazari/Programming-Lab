@@ -1,9 +1,7 @@
 import java.util.*;
-// import java.util.ArrayList;
 public class Main {
 
   static Scanner scan = new Scanner(System.in);
-
   public static void BuildInventory( Inventory inventory) {
 
     System.out.println("Inventory Data");
@@ -26,38 +24,40 @@ public class Main {
 
   public static void main(String[] args) {
     
-    int poolSize =8;
+    int poolSize=8;
     Inventory inventory = new Inventory();
     BuildInventory(inventory);
 
     System.out.println();
     System.out.print("Number of students ordering: ");
     int numberOfOrder = scan.nextInt();
+    System.out.println("Orders: ");
+
     ArrayList<Order>[] orderList = new ArrayList[poolSize];
-    OrderThread threadpool[] = new OrderThread[poolSize];
+    OrderThread threadPool[] = new OrderThread[poolSize];
 
-    for(int i=0;i<poolSize;i++){
-      orderList[i]=new ArrayList<Order>();
+    for(int indexPool=0; indexPool<poolSize; indexPool++){
+      orderList[indexPool]=new ArrayList<Order>();
     }
 
-    for(int i=0;i<numberOfOrder;i++){
-      int number,quantity;
-      char type;
-      number=scan.nextInt();
-      type=scan.next().charAt(0);
-      quantity=scan.nextInt();
-      Order order = new Order(number,type,quantity);
-      orderList[i%poolSize].add(order);
+    for(int indexOrder=0; indexOrder<numberOfOrder; indexOrder++){
+      int orderNumber,orderQuantity;
+      char orderType;
+      orderNumber=scan.nextInt();
+      orderType=scan.next().charAt(0);
+      orderQuantity=scan.nextInt();
+      Order order = new Order(orderNumber,orderType,orderQuantity);
+      orderList[indexOrder%poolSize].add(order);
     }
 
-    for(int i=0;i<poolSize;i++){
-      threadpool[i]=new OrderThread(inventory,orderList[i]);
+    for(int indexOfPool=0;indexOfPool<poolSize;indexOfPool++){
+      threadPool[indexOfPool]=new OrderThread(inventory,orderList[indexOfPool]);
     }
 
     System.out.print("You gave Following Orders\n");
     
-    for(int i=0;i<poolSize;i++){
-      threadpool[i].start();
+    for(int indexOfPool=0;indexOfPool<poolSize;indexOfPool++){
+      threadPool[indexOfPool].start();
     }
   }
 }

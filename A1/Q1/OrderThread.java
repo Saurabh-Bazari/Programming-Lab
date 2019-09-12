@@ -32,10 +32,28 @@ class OrderThread extends Thread{
             int orderSize=order.getOrderQuantity();
             int currentSize = inventory.getCaps();
             if(orderSize > currentSize){
-                System.out.println( "Caps:" + inventory.getCaps() + " Small T-Shirt:" + inventory.getSmallTShirt() + " Medium T-Shirt:" + inventory.getMediumTShirt() + ", Large T-Shirt:" + inventory.getLargeTShirt() + "\n\n" +   "Order "+order.getOrderNumber()+" FAILED!"+ "\n\nCaps:" + inventory.getCaps() + " Small T-Shirt:" + inventory.getSmallTShirt() + " Medium T-Shirt:" + inventory.getMediumTShirt() + ", Large T-Shirt:" + inventory.getLargeTShirt() + "\n-------------------------------------\n");
+                System.out.println( "Caps:" + inventory.getCaps() 
+                + " Small T-Shirt:" + inventory.getSmallTShirt() 
+                + " Medium T-Shirt:" + inventory.getMediumTShirt() 
+                + " Large T-Shirt:" + inventory.getLargeTShirt() + "\n\n" 
+                + "Order "+order.getOrderNumber()+" FAILED!" + "\n\n" 
+                + "Caps:" + inventory.getCaps() 
+                + " Small T-Shirt:" + inventory.getSmallTShirt() 
+                + " Medium T-Shirt:" + inventory.getMediumTShirt() 
+                + " Large T-Shirt:" + inventory.getLargeTShirt() 
+                + "\n-------------------------------------\n");
             }
             else{  
-                System.out.println( "Caps:" + inventory.getCaps() + " Small T-Shirt:" + inventory.getSmallTShirt() + " Medium T-Shirt:" + inventory.getMediumTShirt() + ", Large T-Shirt:" + inventory.getLargeTShirt() + "\n\n" +   "Order "+order.getOrderNumber()+" SUCCESS!"+ "\n\nCaps:" + (currentSize-orderSize) + " Small T-Shirt:" + inventory.getSmallTShirt() + " Medium T-Shirt:" + inventory.getMediumTShirt() + ", Large T-Shirt:" + inventory.getLargeTShirt() + "\n-------------------------------------\n");
+                System.out.println( "Caps:" + inventory.getCaps() 
+                + " Small T-Shirt:" + inventory.getSmallTShirt() 
+                + " Medium T-Shirt:" + inventory.getMediumTShirt() 
+                + " Large T-Shirt:" + inventory.getLargeTShirt() + "\n\n" 
+                + "Order "+order.getOrderNumber()+" SUCCESS!"+ "\n\n"
+                + "Caps:" + (currentSize-orderSize) 
+                + " Small T-Shirt:" + inventory.getSmallTShirt() 
+                + " Medium T-Shirt:" + inventory.getMediumTShirt() 
+                + " Large T-Shirt:" + inventory.getLargeTShirt() 
+                + "\n-------------------------------------\n");
                 inventory.setCaps(currentSize-orderSize);
             }
         }
@@ -45,10 +63,28 @@ class OrderThread extends Thread{
             int orderSize=order.getOrderQuantity();
             int currentSize = inventory.getSmallTShirt();
             if(orderSize > currentSize){
-                System.out.println( "Caps:" + inventory.getCaps() + " Small T-Shirt:" + inventory.getSmallTShirt() + " Medium T-Shirt:" + inventory.getMediumTShirt() + ", Large T-Shirt:" + inventory.getLargeTShirt() + "\n\n" +   "Order "+order.getOrderNumber()+" FAILED!"+ "\n\nCaps:" + inventory.getCaps() + " Small T-Shirt:" + inventory.getSmallTShirt() + " Medium T-Shirt:" + inventory.getMediumTShirt() + ", Large T-Shirt:" + inventory.getLargeTShirt() + "\n-------------------------------------\n");
+                System.out.println( "Caps:" + inventory.getCaps() 
+                + " Small T-Shirt:" + inventory.getSmallTShirt() 
+                + " Medium T-Shirt:" + inventory.getMediumTShirt() 
+                + " Large T-Shirt:" + inventory.getLargeTShirt() + "\n\n" 
+                + " Order "+order.getOrderNumber()+" FAILED!"+ "\n\n"
+                + " Caps:" + inventory.getCaps() 
+                + " Small T-Shirt:" + inventory.getSmallTShirt() 
+                + " Medium T-Shirt:" + inventory.getMediumTShirt() 
+                + " Large T-Shirt:" + inventory.getLargeTShirt() 
+                + "\n-------------------------------------\n");
             }
             else{      
-                System.out.println( "Caps:" + inventory.getCaps() + " Small T-Shirt:" + inventory.getSmallTShirt() + " Medium T-Shirt:" + inventory.getMediumTShirt() + ", Large T-Shirt:" + inventory.getLargeTShirt() + "\n\n" +   "Order "+order.getOrderNumber()+" SUCCESS!"+ "\n\nCaps:" + inventory.getCaps() + " Small T-Shirt:" + (currentSize-orderSize) + " Medium T-Shirt:" + inventory.getMediumTShirt() + ", Large T-Shirt:" + inventory.getLargeTShirt() + "\n-------------------------------------\n");
+                System.out.println( "Caps:" + inventory.getCaps() 
+                + " Small T-Shirt:" + inventory.getSmallTShirt() 
+                + " Medium T-Shirt:" + inventory.getMediumTShirt() 
+                + " Large T-Shirt:" + inventory.getLargeTShirt() + "\n\n" 
+                + "Order "+order.getOrderNumber()+" SUCCESS!"+ "\n\n" 
+                + "Caps:" + inventory.getCaps() 
+                + " Small T-Shirt:" + (currentSize-orderSize) 
+                + " Medium T-Shirt:" + inventory.getMediumTShirt() 
+                + " Large T-Shirt:" + inventory.getLargeTShirt() 
+                + "\n-------------------------------------\n");
                 inventory.setSmallTShirt(currentSize-orderSize);
             }
         }
@@ -58,10 +94,28 @@ class OrderThread extends Thread{
             int orderSize=order.getOrderQuantity();
             int currentSize = inventory.getMediumTShirt();
             if(orderSize > currentSize){
-                System.out.println( "Caps:" + inventory.getCaps() + " Small T-Shirt:" + inventory.getSmallTShirt() + " Medium T-Shirt:" + inventory.getMediumTShirt() + ", Large T-Shirt:" + inventory.getLargeTShirt() + "\n\n" +   "Order "+order.getOrderNumber()+" FAILED!"+ "\n\nCaps:" + inventory.getCaps() + " Small T-Shirt:" + inventory.getSmallTShirt() + " Medium T-Shirt:" + inventory.getMediumTShirt() + ", Large T-Shirt:" + inventory.getLargeTShirt() + "\n-------------------------------------\n");
+                System.out.println( "Caps:" + inventory.getCaps() 
+                + " Small T-Shirt:" + inventory.getSmallTShirt() 
+                + " Medium T-Shirt:" + inventory.getMediumTShirt() 
+                + " Large T-Shirt:" + inventory.getLargeTShirt() + "\n\n" 
+                + "Order "+order.getOrderNumber()+" FAILED!"+ "\n\n" 
+                + "Caps:" + inventory.getCaps() 
+                + " Small T-Shirt:" + inventory.getSmallTShirt() 
+                + " Medium T-Shirt:" + inventory.getMediumTShirt()
+                + " Large T-Shirt:" + inventory.getLargeTShirt()
+                + "\n-------------------------------------\n");
             }
             else{      
-                System.out.println( "Caps:" + inventory.getCaps() + " Small T-Shirt:" + inventory.getSmallTShirt() + " Medium T-Shirt:" + inventory.getMediumTShirt() + ", Large T-Shirt:" + inventory.getLargeTShirt() + "\n\n" +   "Order "+order.getOrderNumber()+" SUCCESS!"+ "\n\nCaps:" + inventory.getCaps() + " Small T-Shirt:" + inventory.getSmallTShirt() + " Medium T-Shirt:" + (currentSize-orderSize) + ", Large T-Shirt:" + inventory.getLargeTShirt() + "\n-------------------------------------\n");
+                System.out.println( "Caps:" + inventory.getCaps() 
+                + " Small T-Shirt:" + inventory.getSmallTShirt() 
+                + " Medium T-Shirt:" + inventory.getMediumTShirt() 
+                + " Large T-Shirt:" + inventory.getLargeTShirt() + "\n\n" 
+                + "Order "+order.getOrderNumber()+" SUCCESS!"+ "\n\n" 
+                + "Caps:" + inventory.getCaps() 
+                + " Small T-Shirt:" + inventory.getSmallTShirt() 
+                + " Medium T-Shirt:" + (currentSize-orderSize) 
+                + " Large T-Shirt:" + inventory.getLargeTShirt() 
+                + "\n-------------------------------------\n");
                 inventory.setMediumTShirt(currentSize-orderSize);
             }
         }
@@ -71,10 +125,28 @@ class OrderThread extends Thread{
             int orderSize=order.getOrderQuantity();
             int currentSize = inventory.getLargeTShirt();
             if(orderSize > currentSize){
-                System.out.println( "Caps:" + inventory.getCaps() + " Small T-Shirt:" + inventory.getSmallTShirt() + " Medium T-Shirt:" + inventory.getMediumTShirt() + ", Large T-Shirt:" + inventory.getLargeTShirt() + "\n\n" +   "Order "+order.getOrderNumber()+" FAILED!"+ "\n\n" + "Caps:" + inventory.getCaps() + " Small T-Shirt:" + inventory.getSmallTShirt() + " Medium T-Shirt:" + inventory.getMediumTShirt() + ", Large T-Shirt:" + inventory.getLargeTShirt() + "\n-------------------------------------\n");
+                System.out.println( "Caps:" + inventory.getCaps() 
+                + " Small T-Shirt:" + inventory.getSmallTShirt() 
+                + " Medium T-Shirt:" + inventory.getMediumTShirt() 
+                + " Large T-Shirt:" + inventory.getLargeTShirt() + "\n\n" 
+                + "Order "+order.getOrderNumber()+" FAILED!"+ "\n\n" 
+                + "Caps:" + inventory.getCaps() 
+                + " Small T-Shirt:" + inventory.getSmallTShirt() 
+                + " Medium T-Shirt:" + inventory.getMediumTShirt() 
+                +  " Large T-Shirt:" + inventory.getLargeTShirt() 
+                + "\n-------------------------------------\n");
             }
             else{      
-                System.out.println( "Caps:" + inventory.getCaps() + " Small T-Shirt:" + inventory.getSmallTShirt() + " Medium T-Shirt:" + inventory.getMediumTShirt() + ", Large T-Shirt:" + inventory.getLargeTShirt() + "\n\n" +   "Order "+order.getOrderNumber()+" SUCCESS!"+ "\n\n" + "Caps:" + inventory.getCaps() + " Small T-Shirt:" + inventory.getSmallTShirt() + " Medium T-Shirt:" + inventory.getMediumTShirt() + ", Large T-Shirt:" + (currentSize-orderSize) + "\n-------------------------------------\n");
+                System.out.println( "Caps:" + inventory.getCaps() 
+                + " Small T-Shirt:" + inventory.getSmallTShirt() 
+                + " Medium T-Shirt:" + inventory.getMediumTShirt() 
+                + " Large T-Shirt:" + inventory.getLargeTShirt() + "\n\n" 
+                + "Order "+order.getOrderNumber()+" SUCCESS!"+ "\n\n" 
+                + "Caps:" + inventory.getCaps() 
+                + " Small T-Shirt:" + inventory.getSmallTShirt() 
+                + " Medium T-Shirt:" + inventory.getMediumTShirt() 
+                + " Large T-Shirt:" + (currentSize-orderSize) 
+                + "\n-------------------------------------\n");
                 inventory.setLargeTShirt(currentSize-orderSize);
             }
         }

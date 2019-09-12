@@ -46,8 +46,8 @@ public class Order {
   }
 
   public Order(int number,char type, int quantity){
-    orderNumber=number;
-    orderType = type;
-    orderQuantity = quantity;
+    this.orderNumber=number;
+    this.orderType = type;
+    this.orderQuantity = quantity;
   }
 }
