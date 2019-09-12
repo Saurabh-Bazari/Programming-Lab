@@ -15,19 +15,19 @@ class PackingUnitThread extends Thread {
     public static int nextWakeUpTime;
     public static Constant.Status status;
 
-    public PackingUnitThread(int packedBottleType1,Constant.Destination sendBottleTo1,int nextWakeUpTime1,Constant.Status status1,UnfinishedTray unfinishedTray, PackingUnit packingUnit, SealingUnit sealingUnit, Godown godown,Semaphore unfinishedTraySemaphore,Semaphore packagingBuffSemaphore,Semaphore godownSemaphore,Semaphore sealingBufferSemaphore) {
+    public PackingUnitThread(int packedBottletype,Constant.Destination sendBottleToWhere,int nextWakeupTime,Constant.Status setStatus,UnfinishedTray unfinishedTray, PackingUnit packingUnit, SealingUnit sealingUnit, Godown godown,Semaphore unfinishedTraySemaphore,Semaphore packagingBuffSemaphore,Semaphore godownSemaphore,Semaphore sealingBufferSemaphore) {
         this.unfinishedTraySemaphore = unfinishedTraySemaphore;
         this.packagingBufferSemaphore = packagingBuffSemaphore;
         this.sealingBufferSemaphore = sealingBufferSemaphore;
         this.godownSemaphore = godownSemaphore;
         this.unfinishedTray = unfinishedTray;
-        packedBottleType=packedBottleType1;
+        packedBottleType=packedBottletype;
         this.packingUnit = packingUnit;
         this.sealingUnit = sealingUnit;
         this.godown = godown;
-        nextWakeUpTime=nextWakeUpTime1;
-        status=status1;
-        sendBottleTo=sendBottleTo1;
+        nextWakeUpTime=nextWakeupTime;
+        status=setStatus;
+        sendBottleTo=sendBottleToWhere;
     }
     public void run(){
         while(true){
@@ -49,15 +49,6 @@ class PackingUnitThread extends Thread {
                         nextWakeUpTime+=2;
                         sendBottleTo = Constant.Destination.GODOWN;
                         status=Constant.Status.WORKING;
-                        // try {
-                        //     Thread.sleep(2000);
-                        // } catch (InterruptedException e) {
-                        //     e.printStackTrace();
-                        // }
-                        // packingUnit.setDonePackingForB1TypeBottels(1+ packingUnit.getDonePackingForB1TypeBottels() );
-                        // godownSemaphore.acquire();
-                        // godown.setB1TypeBottels( godown.getB1TypeBottels() + 1);
-                        // godownSemaphore.release();
                     }
                     else{
                         packingUnit.setBufferB2TypeBottels( packingUnit.getBufferB2TypeBottels() - 1);
@@ -66,15 +57,6 @@ class PackingUnitThread extends Thread {
                         nextWakeUpTime+=2;
                         sendBottleTo=Constant.Destination.GODOWN;
                         status=Constant.Status.WORKING;
-                        // try {
-                        //     Thread.sleep(2000);
-                        // } catch (InterruptedException e) {
-                        //     e.printStackTrace();
-                        // }
-                        // packingUnit.setDonePackingForB2TypeBottels(1+ packingUnit.getDonePackingForB2TypeBottels() );
-                        // godownSemaphore.acquire();
-                        // godown.setB2TypeBottels( godown.getB2TypeBottels() + 1);
-                        // godownSemaphore.release();
                     }
                 }
                 else {
@@ -94,15 +76,6 @@ class PackingUnitThread extends Thread {
                         nextWakeUpTime+=2;
                         sendBottleTo=Constant.Destination.SEALING;
                         status=Constant.Status.WORKING;
-                        // try {
-                        //     Thread.sleep(2000);
-                        // } catch (InterruptedException e) {
-                        //     e.printStackTrace();
-                        // }
-                        // packingUnit.setDonePackingForB1TypeBottels(1+ packingUnit.getDonePackingForB1TypeBottels() );
-                        // sealingBufferSemaphore.acquire();
-                        // sealingUnit.setBufferB1TypeBottels( 1 + sealingUnit.getBufferB1TypeBottels() );
-                        // sealingBufferSemaphore.release();
                     } else if (nextTypeBottel==2) {
                         unfinishedTray.setB2TypeBottels( unfinishedTray.getB2TypeBottels() -1 );
                         unfinishedTraySemaphore.release();
@@ -110,15 +83,6 @@ class PackingUnitThread extends Thread {
                         nextWakeUpTime+=2;
                         sendBottleTo=Constant.Destination.SEALING;
                         status=Constant.Status.WORKING;
-                        // try {
-                        //     Thread.sleep(2000);
-                        // } catch (InterruptedException e) {
-                        //     e.printStackTrace();
-                        // }
-                        // packingUnit.setDonePackingForB2TypeBottels(1+packingUnit.getDonePackingForB2TypeBottels());
-                        // sealingBufferSemaphore.acquire();
-                        // sealingUnit.setBufferB2TypeBottels( 1 + sealingUnit.getBufferB2TypeBottels() );
-                        // sealingBufferSemaphore.release();
                     }
                     else{
                         unfinishedTraySemaphore.release();
@@ -171,7 +135,6 @@ class PackingUnitThread extends Thread {
                     }
                     
                     if(sealingUnit.avaliableSpaceInBuffer()){
-                        //DEADLOCK MAY HAPPEN
                         if(packedBottleType==1){
                             packingUnit.setDonePackingForB1TypeBottels(1+packingUnit.getDonePackingForB1TypeBottels());
                             sealingUnit.setBufferB1TypeBottels( 1 + sealingUnit.getBufferB1TypeBottels() );

@@ -15,7 +15,7 @@ class SealingUnitThread extends Thread{
     public static int nextWakeUpTime;
     public static Constant.Status status;
 
-    public SealingUnitThread( int sealedBottleType1,Constant.Destination sendBottleTo1,int nextWakeUpTime1,Constant.Status status1,UnfinishedTray unfinishedTray, PackingUnit packingUnit, SealingUnit sealingUnit, Godown godown, Semaphore unfinishedTraySemaphore, Semaphore sealingBufferSemaphore,Semaphore godownSemaphore,Semaphore packagingBufferSemaphore) {
+    public SealingUnitThread( int sealedBottletype,Constant.Destination sendBottleToWhere,int nextWakeupTime,Constant.Status setStatus,UnfinishedTray unfinishedTray, PackingUnit packingUnit, SealingUnit sealingUnit, Godown godown, Semaphore unfinishedTraySemaphore, Semaphore sealingBufferSemaphore,Semaphore godownSemaphore,Semaphore packagingBufferSemaphore) {
         this.unfinishedTraySemaphore = unfinishedTraySemaphore;
         this.packagingBufferSemaphore = packagingBufferSemaphore;
         this.sealingBufferSemaphore = sealingBufferSemaphore;
@@ -24,10 +24,10 @@ class SealingUnitThread extends Thread{
         this.packingUnit = packingUnit;
         this.sealingUnit = sealingUnit;
         this.godown = godown;
-        sealedBottleType=sealedBottleType1;
-        nextWakeUpTime=nextWakeUpTime1;
-        status=status1;
-        sendBottleTo=sendBottleTo1;
+        sealedBottleType=sealedBottletype;
+        nextWakeUpTime=nextWakeupTime;
+        status=setStatus;
+        sendBottleTo=sendBottleToWhere;
     }
 
     public void run(){
@@ -50,15 +50,6 @@ class SealingUnitThread extends Thread{
                     nextWakeUpTime+=3;
                     sendBottleTo=Constant.Destination.GODOWN;
                     sealedBottleType=1;
-                    // try {
-                    //     Thread.sleep(3000);
-                    // } catch (InterruptedException e) {
-                    //     e.printStackTrace();
-                    // }
-                    // sealingUnit.setDonePackingForB1TypeBottels( 1+ sealingUnit.getDonePackingForB1TypeBottels() );
-                    // godownSemaphore.acquire();
-                    // godown.setB1TypeBottels( godown.getB1TypeBottels() + 1);
-                    // godownSemaphore.release();
                 }
                 else{
                     sealingUnit.setBufferB2TypeBottels( sealingUnit.getBufferB2TypeBottels() - 1);
@@ -67,15 +58,6 @@ class SealingUnitThread extends Thread{
                     nextWakeUpTime+=3;
                     sendBottleTo=Constant.Destination.GODOWN;
                     sealedBottleType=2;
-                    // try {
-                    //     Thread.sleep(3000);
-                    // } catch (InterruptedException e) {
-                    //     e.printStackTrace();
-                    // }
-                    // sealingUnit.setDonePackingForB2TypeBottels(1+ sealingUnit.getDonePackingForB2TypeBottels()  );
-                    // godownSemaphore.acquire();
-                    // godown.setB2TypeBottels( godown.getB2TypeBottels() + 1);
-                    // godownSemaphore.release();
                 }
             }
             else {
@@ -95,15 +77,6 @@ class SealingUnitThread extends Thread{
                     nextWakeUpTime+=3;
                     sendBottleTo=Constant.Destination.PACKING;
                     sealedBottleType=1;
-                    // try {
-                    //     Thread.sleep(3000);
-                    // } catch (InterruptedException e) {
-                    //     e.printStackTrace();
-                    // }
-                    // sealingUnit.setDonePackingForB1TypeBottels( 1+ sealingUnit.getDonePackingForB1TypeBottels() );
-                    // packagingBufferSemaphore.acquire();
-                    // packingUnit.setBufferB1TypeBottels( 1 + packingUnit.getBufferB1TypeBottels() );
-                    // packagingBufferSemaphore.release();
                     
                 } else if(nextTypeBottel==2) {
                     unfinishedTray.setB2TypeBottels( unfinishedTray.getB2TypeBottels() -1 );
